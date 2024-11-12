@@ -1,10 +1,6 @@
 <script>
-  import { v4 as uuidv4 } from 'uuid';
-
-  let id   = $state(uuidv4()) 
-  let text = $state('Todo text')
-  let done = $state(false)
-
+  let { id, text, done } = $props()
+  
   const handleClick = e => {
     done = !done
     console.log("clicked:", e.target);
