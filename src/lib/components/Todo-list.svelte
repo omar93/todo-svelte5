@@ -1,22 +1,23 @@
 <script>
-  import { v4 as uuidv4 } from 'uuid';
-  import Todo from "./Todo.svelte"
-  let todos = $state([
-    {
-      id: uuidv4(),
-      text: "todo1",
-      done: false
-    },
-    {
-      id: uuidv4(),
-      text: "todo2",
-      done: true
-    }
-  ])
+  import { data } from '../data.js'
+  import Todo from "$lib/components/Todo.svelte"
+  let todos = $state(data)
 </script>
 
-{#each todos as {id, text, done}}
-  <Todo {id} {text} {done}/>
-{/each}
+<div id="list-wrapper">
+  {#each todos as {id, text, done}}
+    <Todo {id} {text} {done}/>
+  {/each}
+</div>
+
+<style>
+  #list-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 70%;
+  }
+</style>
+
 
 
